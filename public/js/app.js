@@ -42770,7 +42770,7 @@ exports = module.exports = __webpack_require__(41)(undefined);
 
 
 // module
-exports.push([module.i, "\nbody, tasks-list {\n    padding-top: 20px;\n}\n.done label {\n    text-decoration: line-through;\n}\n", ""]);
+exports.push([module.i, "\nbody, .tasks-list {\n    padding-top: 20px;\n}\n.done label {\n    text-decoration: line-through;\n}\n", ""]);
 
 // exports
 
@@ -43267,6 +43267,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -43381,6 +43385,14 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "tasks-list" }, [
+              !_vm.tasks.length
+                ? _c("div", { staticClass: "alert alert-danger" }, [
+                    _vm._v(
+                      "\n                            You have no tasks!\n                        "
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
               _c(
                 "ul",
                 { staticClass: "list-unstyled" },

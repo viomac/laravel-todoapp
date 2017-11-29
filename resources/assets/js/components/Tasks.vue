@@ -16,6 +16,10 @@
                             </span>
                         </div>
                         <div class="tasks-list">
+                            <div class="alert alert-danger"
+                                v-if="!tasks.length">
+                                You have no tasks!
+                            </div>
                             <ul class="list-unstyled">
                                 <li v-for="task in tasks" :key="task.id" :class="{ done: task.completed }">
                                     <div class="checkbox">
@@ -99,7 +103,7 @@
 </script>
 
 <style>
-    body, tasks-list {
+    body, .tasks-list {
         padding-top: 20px;
     }
 
