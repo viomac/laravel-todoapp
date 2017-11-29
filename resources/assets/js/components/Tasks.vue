@@ -4,7 +4,6 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">My Tasks</div>
-
                     <div class="panel-body">
                         <div class="input-group">
                             <input type="text" 
@@ -36,7 +35,11 @@
                             </ul>
                         </div>
                     </div>
-
+                    <div class="panel-footer" v-if="tasks.length">
+                        <span class="label label-default">You have {{ tasks.length }} tasks</span>
+                        <span class="label label-warning">{{ remainingTasks() }} tasks left</span>
+                        <span class="label label-success">{{ completedTasks() }} tasks completed</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,6 +61,16 @@
             }
         },
         methods: {
+            remainingTasks() {
+                return this.tasks
+                           .filter(task => {return !task.completed })
+                           .length;
+            },
+            completedTasks() {
+                return this.tasks
+                           .filter(task => {return task.completed })
+                           .length;
+            },
             fetchData() {
                 axios.get('/api/tasks')
                      .then((res) => {

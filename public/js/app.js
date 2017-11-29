@@ -43271,6 +43271,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -43287,6 +43290,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        remainingTasks: function remainingTasks() {
+            return this.tasks.filter(function (task) {
+                return !task.completed;
+            }).length;
+        },
+        completedTasks: function completedTasks() {
+            return this.tasks.filter(function (task) {
+                return task.completed;
+            }).length;
+        },
         fetchData: function fetchData() {
             var _this = this;
 
@@ -43471,7 +43484,23 @@ var render = function() {
                 })
               )
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _vm.tasks.length
+            ? _c("div", { staticClass: "panel-footer" }, [
+                _c("span", { staticClass: "label label-default" }, [
+                  _vm._v("You have " + _vm._s(_vm.tasks.length) + " tasks")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "label label-warning" }, [
+                  _vm._v(_vm._s(_vm.remainingTasks()) + " tasks left")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "label label-success" }, [
+                  _vm._v(_vm._s(_vm.completedTasks()) + " tasks completed")
+                ])
+              ])
+            : _vm._e()
         ])
       ])
     ])
